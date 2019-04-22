@@ -321,6 +321,38 @@ function filter_get_url( array $p_custom_filter ) {
 			$t_query[] = filter_encode_field_and_value( FILTER_PROPERTY_LAST_UPDATED_END_YEAR, $p_custom_filter[FILTER_PROPERTY_LAST_UPDATED_END_YEAR] );
 		}
 	}
+	
+		if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_FILTER_BY_DUE_DATE] ) ) {
+		$t_query[] = filter_encode_field_and_value(
+			FILTER_PROPERTY_FILTER_BY_DUE_DATE,
+			$p_custom_filter[FILTER_PROPERTY_FILTER_BY_DUE_DATE] ? 'on' : 'off' );
+
+		# The start and end dates are only applicable if filter by date is set.
+		if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_DUE_START_DAY] ) ) {
+			$t_query[] = filter_encode_field_and_value( FILTER_PROPERTY_DUE_START_DAY, $p_custom_filter[FILTER_PROPERTY_DUE_START_DAY] );
+		}
+
+		if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_DUE_END_DAY] ) ) {
+			$t_query[] = filter_encode_field_and_value( FILTER_PROPERTY_DUE_END_DAY, $p_custom_filter[FILTER_PROPERTY_DUE_END_DAY] );
+		}
+
+		if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_DUE_START_MONTH] ) ) {
+			$t_query[] = filter_encode_field_and_value( FILTER_PROPERTY_DUE_START_MONTH, $p_custom_filter[FILTER_PROPERTY_DUE_START_MONTH] );
+		}
+
+		if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_DUE_END_MONTH] ) ) {
+			$t_query[] = filter_encode_field_and_value( FILTER_PROPERTY_DUE_END_MONTH, $p_custom_filter[FILTER_PROPERTY_DUE_END_MONTH] );
+		}
+
+		if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_DUE_START_YEAR] ) ) {
+			$t_query[] = filter_encode_field_and_value( FILTER_PROPERTY_DUE_START_YEAR, $p_custom_filter[FILTER_PROPERTY_DUE_START_YEAR] );
+		}
+
+		if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_DUE_END_YEAR] ) ) {
+			$t_query[] = filter_encode_field_and_value( FILTER_PROPERTY_DUE_END_YEAR, $p_custom_filter[FILTER_PROPERTY_DUE_END_YEAR] );
+		}
+	}
+	
 
 	if( !filter_field_is_any( $p_custom_filter[FILTER_PROPERTY_RELATIONSHIP_TYPE] ) ) {
 		if( $p_custom_filter[FILTER_PROPERTY_RELATIONSHIP_TYPE] != -1 ) {
